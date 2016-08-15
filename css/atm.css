@@ -23,7 +23,7 @@ h1, h5 {
 	width:100%;
 }
 
-#atm-list {
+#atm-list, #waiting {
 	max-width: 600px;
 	margin:auto;
 }

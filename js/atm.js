@@ -1,5 +1,5 @@
 function el(selector) {
-	return document.querySelectorId(selector);
+	return document.querySelector(selector);
 }
 
 function loadAtms() {
@@ -55,7 +55,7 @@ function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
 }
 
 
-document.addEventListener('DOMContentLoaded', loadAtms);
+//document.addEventListener('DOMContentLoaded', loadAtms);
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -92,6 +92,8 @@ function showPosition(position) {
 	atms.sort(function(a,b) {
 		return a.distance - b.distance;
 	});
+
+	el('#waiting').style.display = 'none';
 
 	loadAtms();
 
