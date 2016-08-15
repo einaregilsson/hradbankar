@@ -1,0 +1,37 @@
+* {
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	padding:0px;
+	font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1, h5 {
+	text-align: center;
+}
+
+#wrapper {
+	border:solid 1px gray;
+	margin:auto;
+	width:100%;
+}
+
+#atm-list {
+	max-width: 600px;
+	margin:auto;
+}
+
+.row {
+	border-bottom: solid 1px black;
+}
+
+.row:nth-child(odd) {
+	background:#f0f0f0;
+}
