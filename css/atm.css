@@ -17,21 +17,83 @@ h1, h5 {
 	text-align: center;
 }
 
+h1 {
+	color:white;
+	background:#69c;
+	padding-top:8px;
+	padding-bottom:8px;
+}
+
+h5 {
+	margin-bottom:10px;
+}
+
 #wrapper {
 	border:solid 1px gray;
 	margin:auto;
 	width:100%;
 }
 
+#atm-list {
+	border-top:solid 1px black;
+}
 #atm-list, #waiting {
 	max-width: 600px;
 	margin:auto;
 }
 
-.row {
-	border-bottom: solid 1px black;
+#template-row {
+	display:none;
 }
 
+.row {
+	border-bottom: solid 1px black;
+	padding:5px;
+}
+
+.row h4 {
+	font-size:13px;
+}
+
+.row h5 {
+	text-align: left;
+	font-size:14px;
+	margin-top:1px;
+	font-weight: normal;
+	margin-bottom: 1px;
+
+}
+
+.row a {
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.zipAndCity {
+	font-size:11px;
+}
+
+#filter {
+	text-align:center;
+}
+
+#filter button {
+	background:#555555;
+	color:white;
+	display:inline-block;
+	padding:5px;
+	margin-bottom:5px;
+	width:25%;
+	margin:0px;
+	border-style:none;
+}
+
+#filter button.selected {
+	border-bottom:solid 3px white;
+}
+
+
+
 .row:nth-child(odd) {
-	background:#f0f0f0;
+	background:#eef;
 }

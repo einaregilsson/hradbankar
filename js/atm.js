@@ -2,22 +2,48 @@ function el(selector) {
 	return document.querySelector(selector);
 }
 
+
+var templateRow;
 function loadAtms() {
+
+	if (!templateRow) {
+		templateRow = el('#template-row');
+		templateRow.parentNode.removeChild;
+		templateRow.removeAttribute('id');
+
+	}
 	var list = document.getElementById('atm-list');
 	list.innerHTML = '';
 
+
 	for (var i=0; i < atms.length; i++) {
 		var atm = atms[i];
-		var row = createElement('div');
-		row.className = 'row';
-		row.appendChild(createElement('div', atm.bank));
-		row.appendChild(createElement('div', atm.location));
-		row.appendChild(createElement('div', atm.address));
-		row.appendChild(createElement('div', atm.zipCode + ' ' + atm.city));
+
+
+		var row = templateRow.cloneNode(true);
+		dataBind(row, atm);
+		//row.appendChild(createElement('div', atm.bank));
+		//row.appendChild(createElement('div', atm.location));
+		//row.appendChild(createElement('div', atm.address));
+		//row.appendChild(createElement('div', atm.zipCode + ' ' + atm.city));
 		if (atm.distance) {
-			row.appendChild(createElement('div', 'Fjarlægð: ' + atm.distanceDisplay));
+		//	row.appendChild(createElement('div', 'Fjarlægð: ' + atm.distanceDisplay));
 		}
 		list.appendChild(row);
+	}
+}
+
+function dataBind(templateNode, obj) {
+	var bindableNodes = templateNode.querySelectorAll('[data-bind]');
+
+	for (var i=0; i < bindableNodes.length; i++) {
+		var node = bindableNodes[i];
+		var key = node.getAttribute('data-bind');
+		var text = document.createTextNode(obj[key]);
+		while (node.childNodes.length > 0) {
+			node.removeChild(nod.childNodes[0]);
+		}
+		node.appendChild(text);
 	}
 }
 
