@@ -15,20 +15,12 @@ function loadAtms() {
 	var list = document.getElementById('atm-list');
 	list.innerHTML = '';
 
-
 	for (var i=0; i < atms.length; i++) {
 		var atm = atms[i];
 
 
 		var row = templateRow.cloneNode(true);
 		dataBind(row, atm);
-		//row.appendChild(createElement('div', atm.bank));
-		//row.appendChild(createElement('div', atm.location));
-		//row.appendChild(createElement('div', atm.address));
-		//row.appendChild(createElement('div', atm.zipCode + ' ' + atm.city));
-		if (atm.distance) {
-		//	row.appendChild(createElement('div', 'Fjarlægð: ' + atm.distanceDisplay));
-		}
 		list.appendChild(row);
 	}
 }
