@@ -75,6 +75,11 @@ h5 {
 	font-size:11px;
 }
 
+.distance {
+	font-size:14px;
+	font-weight: bold;
+}
+
 #filter {
 	text-align:center;
 }
@@ -97,5 +102,5 @@ h5 {
 
 
 .row:nth-child(odd) {
-	background:#eef;
+	background:#f7f7f7;
 }

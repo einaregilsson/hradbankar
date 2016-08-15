@@ -15,7 +15,7 @@ function loadAtms() {
 	var list = document.getElementById('atm-list');
 	list.innerHTML = '';
 
-	for (var i=0; i < atms.length; i++) {
+	for (var i=0; i < Math.min(atms.length, 20); i++) {
 		var atm = atms[i];
 
 
