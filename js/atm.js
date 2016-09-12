@@ -2,9 +2,10 @@ function el(selector) {
 	return document.querySelector(selector);
 }
 
+var API_KEY = 'AIzaSyD1nMUEaURe3KIRpYi64tePQxPtSNpTysQ';
 
 var templateRow;
-function loadAtms() {
+function loadAtms(coords) {
 
 	if (!templateRow) {
 		templateRow = el('#template-row');
@@ -22,6 +23,15 @@ function loadAtms() {
 		var row = templateRow.cloneNode(true);
 		dataBind(row, atm);
 		list.appendChild(row);
+		var link = row.getElementsByTagName('a')[0];
+
+		var mapUrl = 'https://www.google.com/maps/embed/v1/directions?key=' + API_KEY;
+		mapUrl += '&origin=' + coords.latitude + ',' + coords.longitude;
+		mapUrl += '&destination=' + encodeURI(atm.address + ', ' + atm.zipCode + ' ' + atm.city);
+
+		mapUrl += '&mode=driving';
+		link.setAttribute('data-map-url', mapUrl);
+		row.getElementsByTagName('a')[0].addEventListener('click', toggleMap);
 	}
 }
 
@@ -113,7 +123,37 @@ function showPosition(position) {
 
 	el('#waiting').style.display = 'none';
 
-	loadAtms();
+	loadAtms(position.coords);
 
 }
+
+function toggleMap(e) {
+
+	e.preventDefault();
+	var existingIframe = e.currentTarget.parentNode.getElementsByTagName('iframe')[0];
+
+	if (existingIframe && existingIframe.style.display != 'none') {
+		existingIframe.style.display = 'none';
+		e.currentTarget.innerHTML = 'KORT';
+	} else {
+		if (existingIframe) {
+			existingIframe.style.display = 'block';
+		} else {
+
+			var cs = getComputedStyle(e.currentTarget.parentNode.parentNode);
+			var width = parseInt(cs.getPropertyValue('width'));
+
+			var iframe = createElement('iframe', null, {
+				width:width-20,
+				height:width-20,
+				frameborder:0,
+				src:e.currentTarget.getAttribute('data-map-url')
+			});
+			e.currentTarget.parentNode.appendChild(iframe);
+		}
+
+		e.currentTarget.innerHTML = 'LOKA KORTI';
+	}
+}
+
 getLocation();

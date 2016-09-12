@@ -99,6 +99,10 @@ h5 {
 	border-bottom:solid 3px white;
 }
 
+iframe {
+	display:block;
+	margin:10px auto;
+}
 
 
 .row:nth-child(odd) {
