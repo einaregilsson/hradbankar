@@ -144,8 +144,8 @@ function toggleMap(e) {
 			var width = parseInt(cs.getPropertyValue('width'));
 
 			var iframe = createElement('iframe', null, {
-				width:width-20,
-				height:width-20,
+				width:width-12,
+				height:width-12,
 				frameborder:0,
 				src:e.currentTarget.getAttribute('data-map-url')
 			});
